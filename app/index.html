@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ngBootbox test</title>
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="testApp">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>ngBootbox</h1>
+            <p>AngularJS wrapper for <a href="http://bootboxjs.com" target="_blank">Bootbox.js</a>. Bootbox.js allowes you to easily make use of <a href="http://getbootstrap.com" target="_blank">Twitter Bootstrap</a> modals for javascript alerts, confirms and prompts. ngBootbox includes three directives, one for each of alert, confirm and prompt.</p>
+            <p>
+                <a class="btn btn-default btn-lg" role="button" href="https://github.com/eriktufvesson/ngBootbox" target="_blank">
+                    <i class="fa fa-github"></i>
+                    Fork me on Github
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="container" ng-controller="TestCtrl">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Demo</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary" ng-bootbox-alert="Alert message!">
+                            Alert
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary" ng-bootbox-confirm="Are you sure you want to confirm this?"
+                                ng-bootbox-confirm-action="addAction('Confirmed', 'true')" ng-bootbox-confirm-action-cancel="addAction('Confirmed', 'false')">
+                            Confirm
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary" ng-bootbox-prompt="Please type in your name"
+                                ng-bootbox-prompt-action="addAction('Prompt returned', result)" ng-bootbox-prompt-action-cancel="addAction('Prompt', 'cancelled')">
+                            Prompt
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="action in actions">{{action.msg}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Usage</h1>
+                        <h2>ng-bootbox-alert</h2>
+                        <pre>
+&lt;button class="btn btn-default" ng-bootbox-alert="Alert message!"&gt;
+    Alert
+&lt;/button&gt;</pre>
+                        <h2>ng-bootbox-confirm</h2>
+                        <pre>
+&lt;button class="btn btn-lg btn-primary" ng-bootbox-confirm="Are you sure you want to confirm this?"
+        ng-bootbox-confirm-action="confirmCallbackMethod(attr1, attr2)" ng-bootbox-confirm-action-cancel="confirmCallbackCancel(attr1, attr2)"&gt;
+    Confirm
+&lt;/button&gt;</pre>
+                        <h2>ng-bootbox-prompt</h2>
+                        <pre>
+&lt;button class="btn btn-lg btn-primary" ng-bootbox-prompt="Please type in your name"
+        ng-bootbox-prompt-action="promptCallback(result)" ng-bootbox-prompt-action-cancel="promptCallbackCancelled(result)"&gt;
+    Prompt
+&lt;/button&gt;</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/bootbox/bootbox.js"></script>
+    <script src="app.js"></script>
+    <script src="../ngBootbox.js"></script>
+</body>
+</html>
