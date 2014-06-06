@@ -1,6 +1,3 @@
-/**
- * Created by Erik on 2014-05-30.
- */
 angular.module('ngBootbox', function() {
 
 })
