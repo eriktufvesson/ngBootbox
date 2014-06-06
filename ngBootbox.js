@@ -1,7 +1,7 @@
 angular.module('ngBootbox', function() {
 
 })
-    .directive('ngBootboxAlert', function() {
+    .directive('ngBootboxAlert', function($ngBootbox) {
         return {
             restrict: 'A',
             scope: false,
@@ -55,5 +55,40 @@ angular.module('ngBootbox', function() {
                     });
                 });
             }
+        };
+    })
+    .factory('$ngBootbox', function($q) {
+        return {
+          alert: function(msg) {
+              var deferred = $q.defer();
+              bootbox.alert(msg, function() {
+                  deferred.resolve();
+              });
+              return deferred.promise;
+          },
+          confirm: function(msg) {
+              var deferred = $q.defer();
+              bootbox.confirm(msg, function(result) {
+                  if (result) {
+                      deferred.resolve();
+                  }
+                  else {
+                      deferred.reject();
+                  }
+              });
+              return deferred.promise;
+          },
+          prompt: function(msg) {
+              var deferred = $q.defer();
+              bootbox.prompt(msg, function(result) {
+                  if (result !== null) {
+                      deferred.resolve(result);
+                  }
+                  else {
+                      deferred.reject();
+                  }
+              });
+              return deferred.promise;
+          }
         };
     });
