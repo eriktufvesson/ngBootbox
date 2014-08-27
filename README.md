@@ -51,6 +51,7 @@ ng-bootbox-custom-dialog
 </button>
 ```
 
+```javascript
 $scope.customDialogButtons = {
     warning: {
         label: "Warning!",
@@ -73,3 +74,4 @@ $scope.customDialogButtons = {
         callback: function() { $scope.addAction('Main...!', true) }
     }
 };
+```
