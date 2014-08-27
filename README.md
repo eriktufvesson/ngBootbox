@@ -39,3 +39,37 @@ ng-bootbox-prompt
     Prompt
 </button>
 ```
+
+ng-bootbox-custom-dialog
+
+```html
+<button class="btn btn-lg btn-primary"
+        ng-bootbox-title="A cool title!"
+        ng-bootbox-custom-dialog="Some custom text"
+        ng-bootbox-buttons="customDialogButtons">
+    Custom dialog
+</button>
+```
+
+$scope.customDialogButtons = {
+    warning: {
+        label: "Warning!",
+        className: "btn-warning",
+        callback: function() { $scope.addAction('Warning', false); }
+    },
+    success: {
+        label: "Success!",
+        className: "btn-success",
+        callback: function() { $scope.addAction('Success!', true) }
+    },
+    danger: {
+        label: "Danger!",
+        className: "btn-danger",
+        callback: function() { $scope.addAction('Danger!', false) }
+    },
+    main: {
+        label: "Click ME!",
+        className: "btn-primary",
+        callback: function() { $scope.addAction('Main...!', true) }
+    }
+};

@@ -57,6 +57,28 @@ angular.module('ngBootbox', function() {
             }
         };
     })
+    .directive('ngBootboxCustomDialog', function() {
+        return {
+            restrict: 'A',
+            scope: {
+                actionSuccess: '&ngBootboxActionSuccess',
+                actionDanger: '&ngBootboxActionDanger',
+                actionMain: '&ngBootboxActionMain',
+                title: '@ngBootboxTitle',
+                buttons: '=ngBootboxButtons'
+            },
+            link: function (scope, element, attr) {
+                var msg = attr.ngBootboxCustomDialog;
+                element.bind('click', function () {
+                    bootbox.dialog({
+                        message: msg,
+                        title: scope.title,
+                        buttons: scope.buttons
+                    });
+                });
+            }
+        };
+    })
     .factory('$ngBootbox', function($q) {
         return {
           alert: function(msg) {

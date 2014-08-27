@@ -45,6 +45,14 @@
                             Prompt
                         </button>
                     </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary"
+                                ng-bootbox-title="A cool title!"
+                                ng-bootbox-custom-dialog="Some custom text"
+                                ng-bootbox-buttons="customDialogButtons">
+                            Custom dialog
+                        </button>
+                    </div>
                 </div>
                 <div class="row" style="padding-top: 20px">
                     <div class="col-md-4">
@@ -84,6 +92,36 @@
         ng-bootbox-prompt-action="promptCallback(result)" ng-bootbox-prompt-action-cancel="promptCallbackCancelled(result)"&gt;
     Prompt
 &lt;/button&gt;</pre>
+                        <h2>ng-bootbox-custom-dialog</h2>
+                        <pre>
+&lt;button class="btn btn-lg btn-primary"
+        ng-bootbox-title="A cool title!"
+        ng-bootbox-custom-dialog="Some custom text"
+        ng-bootbox-buttons="customDialogButtons"&gt;
+    Custom dialog
+&lt;/button&gt;</pre>
+                        <pre>$scope.customDialogButtons = {
+            warning: {
+                label: "Warning!",
+                className: "btn-warning",
+                callback: function() { ... }
+            },
+            success: {
+                label: "Success!",
+                className: "btn-success",
+                callback: function() { ... }
+            },
+            danger: {
+                label: "Danger!",
+                className: "btn-danger",
+                callback: function() { ... }
+            },
+            main: {
+                label: "Click ME!",
+                className: "btn-primary",
+                callback: function() { ... }
+            }
+        };</pre>
                     </div>
                 </div>
             </div>

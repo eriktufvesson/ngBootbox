@@ -39,4 +39,27 @@ angular.module('testApp', ['ngBootbox'])
                     $log.log('Prompt dismissed!');
                 });
         };
+
+        $scope.customDialogButtons = {
+            warning: {
+                label: "Warning!",
+                className: "btn-warning",
+                callback: function() { $scope.addAction('Warning', false); }
+            },
+            success: {
+                label: "Success!",
+                className: "btn-success",
+                callback: function() { $scope.addAction('Success!', true) }
+            },
+            danger: {
+                label: "Danger!",
+                className: "btn-danger",
+                callback: function() { $scope.addAction('Danger!', false) }
+            },
+            main: {
+                label: "Click ME!",
+                className: "btn-primary",
+                callback: function() { $scope.addAction('Main...!', true) }
+            }
+        };
     });
