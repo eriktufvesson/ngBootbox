@@ -61,9 +61,6 @@ angular.module('ngBootbox', function() {
         return {
             restrict: 'A',
             scope: {
-                actionSuccess: '&ngBootboxActionSuccess',
-                actionDanger: '&ngBootboxActionDanger',
-                actionMain: '&ngBootboxActionMain',
                 title: '@ngBootboxTitle',
                 buttons: '=ngBootboxButtons'
             },
