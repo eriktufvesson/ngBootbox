@@ -25,10 +25,10 @@ angular.module('ngBootbox', function() {
                 element.bind('click', function () {
                     bootbox.confirm(msg, function (result) {
                         if (result) {
-                            scope.actionOK();
+                            scope.$apply(scope.actionOK);
                         }
                         else {
-                            scope.actionCancel();
+                            scope.$apply(scope.actionCancel);
                         }
                     });
                 });
@@ -47,10 +47,10 @@ angular.module('ngBootbox', function() {
                 element.bind('click', function () {
                     bootbox.prompt(msg, function (result) {
                         if (result !== null) {
-                            scope.actionOK({result: result});
+                            scope.$apply(function() { scope.actionOK({result: result}); });
                         }
                         else {
-                            scope.actionCancel();
+                            scope.$apply(scope.actionCancel);
                         }
                     });
                 });
