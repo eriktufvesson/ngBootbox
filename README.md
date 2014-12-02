@@ -15,63 +15,71 @@ Usage
 =========
 
 ng-bootbox-alert
+----------------
 
-```html
-<button class="btn btn-default" ng-bootbox-alert="Alert message!">
-    Alert
-</button>
-```
+    <button class="btn btn-default" ng-bootbox-alert="Alert message!">
+        Alert
+    </button>
 
 ng-bootbox-confirm
+------------------
 
-```html
-<button class="btn btn-lg btn-primary" ng-bootbox-confirm="Are you sure you want to confirm this?"
-        ng-bootbox-confirm-action="confirmCallbackMethod(attr1, attr2)" ng-bootbox-confirm-action-cancel="confirmCallbackCancel(attr1, attr2)">
-    Confirm
-</button>
-```
+    <button class="btn btn-lg btn-primary" ng-bootbox-confirm="Are you sure you want to confirm this?"
+            ng-bootbox-confirm-action="confirmCallbackMethod(attr1, attr2)" ng-bootbox-confirm-action-cancel="confirmCallbackCancel(attr1, attr2)">
+        Confirm
+    </button>
 
 ng-bootbox-prompt
+-----------------
 
-```html
-<button class="btn btn-lg btn-primary" ng-bootbox-prompt="Please type in your name"
-        ng-bootbox-prompt-action="promptCallback(result)" ng-bootbox-prompt-action-cancel="promptCallbackCancelled(result)">
-    Prompt
-</button>
-```
+    <button class="btn btn-lg btn-primary" ng-bootbox-prompt="Please type in your name"
+            ng-bootbox-prompt-action="promptCallback(result)" ng-bootbox-prompt-action-cancel="promptCallbackCancelled(result)">
+        Prompt
+    </button>
 
 ng-bootbox-custom-dialog
+------------------------
 
-```html
-<button class="btn btn-lg btn-primary"
-        ng-bootbox-title="A cool title!"
-        ng-bootbox-custom-dialog="Some custom text"
-        ng-bootbox-buttons="customDialogButtons">
-    Custom dialog
-</button>
-```
+    <button class="btn btn-lg btn-primary"
+            ng-bootbox-title="A cool title!"
+            ng-bootbox-custom-dialog="Some custom text"
+            ng-bootbox-buttons="customDialogButtons">
+        Custom dialog
+    </button>
 
-```javascript
-$scope.customDialogButtons = {
-    warning: {
-        label: "Warning!",
-        className: "btn-warning",
-        callback: function() { $scope.addAction('Warning', false); }
-    },
-    success: {
-        label: "Success!",
-        className: "btn-success",
-        callback: function() { $scope.addAction('Success!', true) }
-    },
-    danger: {
-        label: "Danger!",
-        className: "btn-danger",
-        callback: function() { $scope.addAction('Danger!', false) }
-    },
-    main: {
-        label: "Click ME!",
-        className: "btn-primary",
-        callback: function() { $scope.addAction('Main...!', true) }
-    }
-};
-```
+and in your controller
+
+    $scope.customDialogButtons = {
+        warning: {
+            label: "Warning!",
+            className: "btn-warning",
+            callback: function() { $scope.addAction('Warning', false); }
+        },
+        success: {
+            label: "Success!",
+            className: "btn-success",
+            callback: function() { $scope.addAction('Success!', true) }
+        },
+        danger: {
+            label: "Danger!",
+            className: "btn-danger",
+            callback: function() { $scope.addAction('Danger!', false) }
+        },
+        main: {
+            label: "Click ME!",
+            className: "btn-primary",
+            callback: function() { $scope.addAction('Main...!', true) }
+        }
+    };
+
+Custom dialog with HTML Template
+--------------------------------
+
+    <button class="btn btn-lg btn-primary"
+            ng-bootbox-title="A cool title!"
+            ng-bootbox-custom-dialog
+            ng-bootbox-custom-dialog-template="custom-dialog.tpl.html"
+            ng-bootbox-buttons="customDialogButtons">
+        Custom dialog with template
+    </button>
+

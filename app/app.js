@@ -78,4 +78,15 @@ angular.module('testApp', ['ngBootbox'])
       $scope.deleteBook = function() {
           $ngBootbox.alert('Book deleted!');
       };
+  })
+  .controller('CustomCtrl', function($scope, $log, $ngBootbox) {
+      $scope.items = [
+          { id: 1, name: 'Item 1' },
+          { id: 2, name: 'Item 2' },
+          { id: 3, name: 'Item 3' }
+      ];
+
+      $scope.buttonClick = function() {
+          $ngBootbox.alert('The button was clicked!');
+      };
   });

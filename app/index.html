@@ -74,6 +74,15 @@
                             Custom confirm
                         </button>
                     </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-lg btn-primary"
+                                ng-bootbox-title="A cool title!"
+                                ng-bootbox-custom-dialog
+                                ng-bootbox-custom-dialog-template="custom-dialog.tpl.html"
+                                ng-bootbox-buttons="customDialogButtons">
+                            Custom dialog with template
+                        </button>
+                    </div>
                 </div>
                 <div class="row" style="margin-top: 20px;">
                     <div class="col-md-12">
@@ -132,6 +141,16 @@
                 callback: function() { ... }
             }
         };</pre>
+                        <h2>Custom dialog with HTML template</h2>
+                        <pre>
+&lt;button class="btn btn-lg btn-primary"
+        ng-bootbox-title="A cool title!"
+        ng-bootbox-custom-dialog
+        ng-bootbox-custom-dialog-template="custom-dialog.tpl.html"
+        ng-bootbox-buttons="customDialogButtons"&gt;
+    Custom dialog with template
+&lt;/button&gt;
+                        </pre>
                     </div>
                 </div>
             </div>
