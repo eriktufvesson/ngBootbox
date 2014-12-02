@@ -11,6 +11,11 @@ Prerequisites
 * <a href="http://getbootstrap.com">Bootstrap3</a>
 * <a href="http://bootboxjs.com">Bootbox.js</a>
 
+Demo
+====
+
+Visit this page for a working [demo](http://eriktufvesson.github.io/ngbootbox/ "ngBootbox").
+
 Usage
 =========
 
