@@ -48,7 +48,8 @@ ng-bootbox-custom-dialog
     <button class="btn btn-lg btn-primary"
             ng-bootbox-title="A cool title!"
             ng-bootbox-custom-dialog="Some custom text"
-            ng-bootbox-buttons="customDialogButtons">
+            ng-bootbox-buttons="customDialogButtons"
+            ng-bootbox-class-name="some-class">
         Custom dialog
     </button>
 
