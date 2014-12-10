@@ -77,7 +77,8 @@ angular.module('ngBootbox', [])
           restrict: 'A',
           scope: {
               title: '@ngBootboxTitle',
-              buttons: '=ngBootboxButtons'
+              buttons: '=ngBootboxButtons',
+              className: '@ngBootboxClassName'
           },
           link: function (scope, element, attr) {
               var msg = '';
@@ -94,7 +95,8 @@ angular.module('ngBootbox', [])
                   bootbox.dialog({
                       message: msg,
                       title: scope.title,
-                      buttons: scope.buttons
+                      buttons: scope.buttons,
+                      className: scope.className
                   });
                   //scope.$apply();
               });

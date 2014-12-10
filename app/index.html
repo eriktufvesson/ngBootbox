@@ -5,6 +5,12 @@
     <title>ngBootbox test</title>
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .test-class .modal-content {
+            background-color: lightpink !important;
+        }
+    </style>
 </head>
 <body ng-app="testApp">
     <div class="jumbotron">
@@ -79,7 +85,8 @@
                                 ng-bootbox-title="A cool title!"
                                 ng-bootbox-custom-dialog
                                 ng-bootbox-custom-dialog-template="custom-dialog.tpl.html"
-                                ng-bootbox-buttons="customDialogButtons">
+                                ng-bootbox-buttons="customDialogButtons"
+                                ng-bootbox-class-name="test-class">
                             Custom dialog with template
                         </button>
                     </div>
