@@ -1,6 +1,4 @@
-angular.module('ngBootbox', function() {
-
-})
+angular.module('ngBootbox', [])
   .directive('ngBootboxAlert', function($ngBootbox) {
       return {
           restrict: 'A',
