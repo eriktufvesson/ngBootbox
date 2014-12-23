@@ -103,7 +103,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
-  .factory('$ngBootbox', function($q) {
+  .factory('$ngBootbox',["$q", function($q) {
       return {
           alert: function(msg) {
               var deferred = $q.defer();
@@ -137,4 +137,4 @@ angular.module('ngBootbox', [])
               return deferred.promise;
           }
       };
-  });
+  } ]);
