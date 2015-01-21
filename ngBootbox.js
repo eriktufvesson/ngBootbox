@@ -78,7 +78,8 @@ angular.module('ngBootbox', [])
           scope: {
               title: '@ngBootboxTitle',
               buttons: '=ngBootboxButtons',
-              className: '@ngBootboxClassName'
+              className: '@ngBootboxClassName',
+              data: '=ngBootboxData'
           },
           link: function (scope, element, attr) {
               var msg = '';
