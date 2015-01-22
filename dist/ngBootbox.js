@@ -83,7 +83,8 @@ angular.module('ngBootbox', [])
               title: '@ngBootboxTitle',
               buttons: '=ngBootboxButtons',
               className: '@ngBootboxClassName',
-              data: '=ngBootboxData'
+              data: '=ngBootboxData',
+              options: '=ngBootboxOptions'
           },
           link: function (scope, element, attr) {
               var msg = '';
@@ -97,13 +98,17 @@ angular.module('ngBootbox', [])
                   msg = attr.ngBootboxCustomDialog;
               }
               element.bind('click', function () {
-                  bootbox.dialog({
-                      message: msg,
-                      title: scope.title,
-                      buttons: scope.buttons,
-                      className: scope.className
-                  });
-                  //scope.$apply();
+                  if (scope.options) {
+                      bootbox.dialog(scope.options);
+                  }
+                  else {
+                      bootbox.dialog({
+                          message: msg,
+                          title: scope.title,
+                          buttons: scope.buttons,
+                          className: scope.className
+                      });
+                  }
               });
           }
       };
@@ -141,6 +146,15 @@ angular.module('ngBootbox', [])
                   }
               });
               return deferred.promise;
+          },
+          customDialog: function(options) {
+              bootbox.dialog(options);
+          },
+          setDefaults: function(options) {
+              bootbox.setDefaults(options);
+          },
+          hideAll: function() {
+              bootbox.hideAll();
           }
       };
   }]);
