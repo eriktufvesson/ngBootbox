@@ -1,5 +1,6 @@
 angular.module('ngBootbox', [])
-  .directive('ngBootboxAlert', function($ngBootbox) {
+    /* @ngInject */
+  .directive('ngBootboxAlert', function() {
       return {
           restrict: 'A',
           scope: false,
@@ -11,6 +12,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .directive('ngBootboxConfirm', function() {
       return {
           restrict: 'A',
@@ -33,6 +35,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .directive('ngBootboxPrompt', function() {
       return {
           restrict: 'A',
@@ -55,6 +58,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .directive('ngBootboxCustomDialog', function($templateCache, $compile, $q, $http) {
 
       var getTemplate = function(templateId) {
@@ -104,6 +108,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .factory('$ngBootbox', function($q) {
       return {
           alert: function(msg) {

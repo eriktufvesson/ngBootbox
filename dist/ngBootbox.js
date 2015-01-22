@@ -1,5 +1,6 @@
 angular.module('ngBootbox', [])
-  .directive('ngBootboxAlert', function($ngBootbox) {
+    /* @ngInject */
+  .directive('ngBootboxAlert', function() {
       return {
           restrict: 'A',
           scope: false,
@@ -11,6 +12,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .directive('ngBootboxConfirm', function() {
       return {
           restrict: 'A',
@@ -33,6 +35,7 @@ angular.module('ngBootbox', [])
           }
       };
   })
+    /* @ngInject */
   .directive('ngBootboxPrompt', function() {
       return {
           restrict: 'A',
@@ -55,7 +58,8 @@ angular.module('ngBootbox', [])
           }
       };
   })
-  .directive('ngBootboxCustomDialog', function($templateCache, $compile, $q, $http) {
+    /* @ngInject */
+  .directive('ngBootboxCustomDialog', ["$templateCache", "$compile", "$q", "$http", function($templateCache, $compile, $q, $http) {
 
       var getTemplate = function(templateId) {
           var def = $q.defer();
@@ -78,7 +82,8 @@ angular.module('ngBootbox', [])
           scope: {
               title: '@ngBootboxTitle',
               buttons: '=ngBootboxButtons',
-              className: '@ngBootboxClassName'
+              className: '@ngBootboxClassName',
+              data: '=ngBootboxData'
           },
           link: function (scope, element, attr) {
               var msg = '';
@@ -102,8 +107,9 @@ angular.module('ngBootbox', [])
               });
           }
       };
-  })
-  .factory('$ngBootbox', function($q) {
+  }])
+    /* @ngInject */
+  .factory('$ngBootbox', ["$q", function($q) {
       return {
           alert: function(msg) {
               var deferred = $q.defer();
@@ -137,4 +143,4 @@ angular.module('ngBootbox', [])
               return deferred.promise;
           }
       };
-  });
+  }]);

@@ -11,7 +11,6 @@ angular.module('testApp', ['ngBootbox'])
           $scope.actions.push({
               msg: type + ': ' + msg
           });
-          //$scope.$apply();
       };
 
 
@@ -49,17 +48,17 @@ angular.module('testApp', ['ngBootbox'])
           success: {
               label: "Success!",
               className: "btn-success",
-              callback: function() { $scope.addAction('Success!', true) }
+              callback: function() { $scope.addAction('Success!', true); }
           },
           danger: {
               label: "Danger!",
               className: "btn-danger",
-              callback: function() { $scope.addAction('Danger!', false) }
+              callback: function() { $scope.addAction('Danger!', false); }
           },
           main: {
               label: "Click ME!",
               className: "btn-primary",
-              callback: function() { $scope.addAction('Main...!', true) }
+              callback: function() { $scope.addAction('Main...!', true); }
           }
       };
 
@@ -89,4 +88,8 @@ angular.module('testApp', ['ngBootbox'])
       $scope.buttonClick = function() {
           $ngBootbox.alert('The button was clicked!');
       };
-  });
+  })
+  .run(['$templateCache', function($templateCache) {
+      $templateCache.put('custom-dialog.tpl.html',
+        '<div ng-controller="CustomCtrl"><h1>This is a cached template!</h1><p>Some text...</p><h2>A list</h2><ul><li ng-repeat="item in items">{{item.name}}</li></ul><button class="btn btn-primary" ng-click="buttonClick()">A button</button></div>');
+  }]);
