@@ -35,6 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
+                        <button class="btn btn-lg btn-warning" ng-click="test()">Test!!</button>
                         <button class="btn btn-lg btn-primary" ng-bootbox-alert="Alert message!">
                             Alert
                         </button>
@@ -87,14 +88,14 @@
                                 ng-bootbox-custom-dialog-template="custom-dialog.tpl.html"
                                 ng-bootbox-buttons="customDialogButtons"
                                 ng-bootbox-class-name="test-class">
-                            Custom dialog with template
+                            Custom dialog template
                         </button>
                     </div>
                     <div class="col-md-4">
                         <button class="btn btn-lg btn-success"
                                 ng-bootbox-custom-dialog
                                 ng-bootbox-options="customDialogOptions">
-                            Custom dialog with options
+                            Custom dialog options
                         </button>
                     </div>
                 </div>
@@ -178,4 +179,4 @@
     <script src="app.js"></script>
     <script src="../ngBootbox.js"></script>
 </body>
-</html>
+</html>          

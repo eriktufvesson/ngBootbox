@@ -4,6 +4,11 @@
 angular.module('testApp', ['ngBootbox'])
   .controller('TestCtrl', function($scope, $log, $ngBootbox) {
 
+      $ngBootbox.setDefaults({
+          animate: false,
+          backdrop: false
+      });
+
       $scope.actions = [];
 
       $scope.addAction = function(type, msg) {
