@@ -147,6 +147,9 @@ angular.module('ngBootbox', [])
               });
               return deferred.promise;
           },
+          customDialog: function(options) {
+              bootbox.dialog(options);
+          },
           setDefaults: function(options) {
               bootbox.setDefaults(options);
           },

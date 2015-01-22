@@ -44,6 +44,24 @@ angular.module('testApp', ['ngBootbox'])
             });
       };
 
+      $scope.openCustomDialogWithService = function() {
+        $ngBootbox.customDialog($scope.customDialogOptions);
+      };
+
+      $scope.customDialogOptions = {
+          message: 'This is a message!',
+          title: 'The best title!',
+          onEscape: function() {
+              $log.info('Escape was pressed');
+          },
+          show: true,
+          backdrop: false,
+          closeButton: true,
+          animate: true,
+          className: 'test-class',
+          buttons: $scope.customDialogButtons
+      };
+
       $scope.customDialogButtons = {
           warning: {
               label: "Warning!",
@@ -67,19 +85,6 @@ angular.module('testApp', ['ngBootbox'])
           }
       };
 
-      $scope.customDialogOptions = {
-          message: 'This is a message!',
-          title: 'The best title!',
-          onEscape: function() {
-              $log.info('Escape was pressed');
-          },
-          show: true,
-          backdrop: false,
-          closeButton: true,
-          animate: true,
-          className: 'test-class',
-          buttons: $scope.customDialogButtons
-      };
 
       $scope.customConfirmButtons = {
           ok: {
