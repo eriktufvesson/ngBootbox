@@ -24,9 +24,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests",
-    "app",
+    "app/",
     "projectFilesBackup",
     ".idea"
   ],
