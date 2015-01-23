@@ -3,21 +3,54 @@ ngBootbox
 
 AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of Twitter Bootstrap modals for javascript alerts, confirms and prompts. ngBootbox includes three directives, one for each of alert, confirm and prompt.
 
-Prerequisites
+Current version
+===============
+
+## Version 0.0.3
+
+Installation
 =========
 
-* <a href="http://angularjs.org">AngularJS</a>
-* <a href="http://jquery.com">jQuery</a>
-* <a href="http://getbootstrap.com">Bootstrap3</a>
-* <a href="http://bootboxjs.com">Bootbox.js</a>
+Bower
+-----
+    bower install --save ngBootbox
+
+Development mode
+----------------
+    <head>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/bootbox/bootbox.js"></script>
+        <script src="bower_components/ngBootbox/dist/ngBootbox.js"></script>
+    </head>
+
+Production mode
+---------------
+    <head>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/bootbox/bootbox.js"></script>
+        <script src="bower_components/ngBootbox/dist/ngBootbox.min.js"></script>
+    </head>
+
+Initialize module
+-----------------
+    angular.module('yourApp', ['ngBootbox']);
+
+Minification
+------------
+
+ngBootbox is minification safe, so to minify your own development files, use [Gulp](http://gulpjs.com/) or [Grunt](http://gruntjs.com/) with [ngAnnotate](https://github.com/olov/ng-annotate) ([gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate/) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate)).
 
 Demo
 ====
 
 Visit this page for a working [demo](http://eriktufvesson.github.io/ngbootbox/ "ngBootbox").
 
-Usage
-=========
+Directives
+==========
 
 ng-bootbox-alert
 ----------------
@@ -53,30 +86,30 @@ ng-bootbox-custom-dialog
         Custom dialog
     </button>
 
-and in your controller
-
-    $scope.customDialogButtons = {
-        warning: {
-            label: "Warning!",
-            className: "btn-warning",
-            callback: function() { $scope.addAction('Warning', false); }
-        },
-        success: {
-            label: "Success!",
-            className: "btn-success",
-            callback: function() { $scope.addAction('Success!', true) }
-        },
-        danger: {
-            label: "Danger!",
-            className: "btn-danger",
-            callback: function() { $scope.addAction('Danger!', false) }
-        },
-        main: {
-            label: "Click ME!",
-            className: "btn-primary",
-            callback: function() { $scope.addAction('Main...!', true) }
-        }
-    };
+    <script>
+        $scope.customDialogButtons = {
+            warning: {
+                label: "Warning!",
+                className: "btn-warning",
+                callback: function() { $scope.addAction('Warning', false); }
+            },
+            success: {
+                label: "Success!",
+                className: "btn-success",
+                callback: function() { $scope.addAction('Success!', true) }
+            },
+            danger: {
+                label: "Danger!",
+                className: "btn-danger",
+                callback: function() { $scope.addAction('Danger!', false) }
+            },
+            main: {
+                label: "Click ME!",
+                className: "btn-primary",
+                callback: function() { $scope.addAction('Main...!', true) }
+            }
+        };
+        </script>
 
 Custom dialog with HTML Template
 --------------------------------
@@ -89,3 +122,142 @@ Custom dialog with HTML Template
         Custom dialog with template
     </button>
 
+Custom dialog options
+---------------------
+
+An options object can also be used to configure a custom dialog. A full list of available options can be found in the official Bootbox.js [documentation](http://bootboxjs.com/documentation.html).
+
+    <button class="btn btn-lg btn-success"
+            ng-bootbox-custom-dialog
+            ng-bootbox-options="customDialogOptions">
+        Custom dialog options
+    </button>
+
+    <script>
+        $scope.customDialogOptions = {
+            message: 'This is a message!',
+            title: 'The best title!',
+            onEscape: function() {
+              $log.info('Escape was pressed');
+            },
+            show: true,
+            backdrop: false,
+            closeButton: true,
+            animate: true,
+            className: 'test-class',
+            buttons: {
+                warning: {
+                    label: "Cancel",
+                    className: "btn-warning",
+                    callback: function() { ... }
+                },
+                success: {
+                    label: "Ok",
+                    className: "btn-success",
+                    callback: function() { ... }
+                }
+            }
+        };
+    </script>
+
+$ngBootbox service
+==================
+
+The $ngBootbox service can be used to utilize bootbox.js from within your angular code.
+
+Usage
+-----
+Inject the **$ngBootbox** service in your own angular controller, service, directive, etc.
+
+    angular.module('yourApp')
+        .controller('yourCtrl', function($ngBootbox) { ... });
+
+
+Methods
+-------
+
+### $ngBootbox.alert(msg)
+
+Returns a promise that is resolved when the dialog is closed.
+
+**Example**
+
+    $ngBootbox.alert('An important message!')
+        .then(function() {
+            console.log('Alert closed');
+        });
+
+
+### $ngBootbox.confirm(msg)
+
+Returns a promise that is resolved when if confirmed and rejected if dismissed.
+
+**Example**
+
+    $ngBootbox.confirm('A question?')
+        .then(function() {
+            console.log('Confirmed!');
+        }, function() {
+            console.log('Confirm dismissed!');
+        });
+
+### $ngBootbox.prompt(msg)
+
+Returns a promise that is resolved when submitted and rejected if dismissed.
+
+**Example**
+
+    $ngBootbox.prompt('Enter something')
+        .then(function(result) {
+            console.log('Prompt returned: ' + result);
+        }, function() {
+            console.log('Prompt dismissed!');
+        });
+
+### $ngBootbox.customDialog(options)
+
+**Example**
+
+    var options = {
+            message: 'This is a message!',
+            title: 'The title!',
+            className: 'test-class',
+            buttons: {
+                 warning: {
+                     label: "Cancel",
+                     className: "btn-warning",
+                     callback: function() { ... }
+                 },
+                 success: {
+                     label: "Ok",
+                     className: "btn-success",
+                     callback: function() { ... }
+                 }
+            }
+        };
+
+    $ngBootbox.customDialog(options);
+
+A full list of available options can be found in the official Bootbox.js [documentation](http://bootboxjs.com/documentation.html).
+
+
+### $ngBootbox.setDefaults(options)
+
+Used to set default values for all your Bootbox alerts, confirms, prompts and dialogs.
+
+**Example**
+
+    $ngBootbox.setDefaults({
+        animate: false,
+        backdrop: false
+    });
+
+A full list of available options can be found in the official Bootbox.js [documentation](http://bootboxjs.com/documentation.html).
+
+### $ngBootbox.hideAll()
+
+Hide all currently active bootbox dialogs.
+
+**Example**
+
+    $ngBootbox.hideAll();
