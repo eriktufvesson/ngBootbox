@@ -114,7 +114,7 @@ angular.module('ngBootbox', [])
     };
   })
   /* @ngInject */
-  .factory('$ngBootbox', function($q, $templateCache, $compile, $rootScope) {
+  .factory('$ngBootbox', function($q, $templateCache, $compile, $rootScope, $http) {
     return {
       alert: function(msg) {
         var deferred = $q.defer();
