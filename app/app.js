@@ -49,7 +49,8 @@ angular.module('testApp', ['ngBootbox'])
       };
 
       $scope.customDialogOptions = {
-          message: 'This is a message!',
+          //message: 'This is a message!',
+          templateUrl: 'custom-dialog.tpl.html',
           title: 'The best title!',
           onEscape: function() {
               $log.info('Escape was pressed');
@@ -112,8 +113,8 @@ angular.module('testApp', ['ngBootbox'])
       $scope.buttonClick = function() {
           $ngBootbox.alert('The button was clicked!');
       };
-  })
-  .run(['$templateCache', function($templateCache) {
+  });
+  /*.run(['$templateCache', function($templateCache) {
       $templateCache.put('custom-dialog.tpl.html',
         '<div ng-controller="CustomCtrl"><h1>This is a cached template!</h1><p>Some text...</p><h2>A list</h2><ul><li ng-repeat="item in items">{{item.name}}</li></ul><button class="btn btn-primary" ng-click="buttonClick()">A button</button></div>');
-  }]);
+  }]);*/

@@ -6,7 +6,7 @@ AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of T
 Current version
 ===============
 
-## Version 0.0.3
+### Version 0.0.4
 
 Installation
 =========
@@ -239,6 +239,18 @@ Returns a promise that is resolved when submitted and rejected if dismissed.
     $ngBootbox.customDialog(options);
 
 A full list of available options can be found in the official Bootbox.js [documentation](http://bootboxjs.com/documentation.html).
+
+### Update
+
+**New in 0.0.4:** There is now support for specifying a HTML template also when using the $ngBootbox service for displaying custom dialogs.
+
+    $scope.customDialogOptions = {
+    templateUrl: 'custom-dialog.tpl.html',
+         title: 'The title!',
+         buttons: $scope.customDialogButtons
+    };
+
+When doing this, the message property will be overwritten by the content of the HTML template.
 
 
 ### $ngBootbox.setDefaults(options)
