@@ -30,7 +30,12 @@
         <div class="col-lg-8 col-lg-offset-2">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Demo</h1>
+                    <h1 style="display:inline-block;">Demo</h1>
+                    <small>
+                        Set locale for default buttons:
+                        <select data-ng-options="locale for locale in locales" data-ng-change="switchLanguage()" data-ng-model="selectedLocale">
+                        </select>
+                    </small>
                 </div>
             </div>
             <div class="row">

@@ -4,9 +4,14 @@
 angular.module('testApp', ['ngBootbox'])
   .controller('TestCtrl', function($scope, $log, $ngBootbox) {
 
+      $scope.locales = ['bg_BG', 'br', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'he', 'hu', 'hr', 'id', 'it', 'ja', 'lt',
+        'lv', 'nl', 'no', 'pl', 'pt', 'ru', 'sq', 'sv', 'th', 'tr', 'zh_CN', 'zh_TW'];
+      $scope.selectedLocale = 'en';
+
       $ngBootbox.setDefaults({
           animate: false,
-          backdrop: false
+          backdrop: false,
+          locale: $scope.selectedLocale
       });
 
       $scope.actions = [];
@@ -101,6 +106,10 @@ angular.module('testApp', ['ngBootbox'])
 
       $scope.deleteBook = function() {
           $ngBootbox.alert('Book deleted!');
+      };
+
+      $scope.switchLanguage = function() {
+          $ngBootbox.setLocale($scope.selectedLocale);
       };
   })
   .controller('CustomCtrl', function($scope, $log, $ngBootbox) {
