@@ -6,7 +6,7 @@ AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of T
 Current version
 ===============
 
-### Version 0.0.4
+### Version 0.0.5
 
 Installation
 =========
@@ -273,3 +273,21 @@ Hide all currently active bootbox dialogs.
 **Example**
 
     $ngBootbox.hideAll();
+
+### $ngBootbox.addLocale(String name, object values)
+
+Allows the user to add a custom translation for each of the built-in command buttons. The values object should be in this format:
+
+    {
+        OK : '',
+        CANCEL : '',
+        CONFIRM : ''
+    }
+
+### $ngBootbox.removeLocale(String name)
+
+Allows the user to remove a locale from the available locale settings.
+
+### $ngBootbox.setLocale(String name)
+
+Allows the user to select a locale rather than using setDefaults("locale", ...).
