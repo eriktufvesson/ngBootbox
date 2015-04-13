@@ -167,6 +167,15 @@ angular.module('ngBootbox', [])
       },
       hideAll: function() {
         bootbox.hideAll();
+      },
+      setLocale: function(name) {
+        bootbox.setLocale(name);
+      },
+      addLocale: function(name, values) {
+        bootbox.addLocale(name, values);
+      },
+      removeLocale: function(name) {
+        bootbox.removeLocale(name);
       }
     };
 
