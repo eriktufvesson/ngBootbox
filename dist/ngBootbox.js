@@ -151,7 +151,8 @@ angular.module('ngBootbox', [])
         if (options.templateUrl) {
           getTemplate(options.templateUrl)
             .then(function(template) {
-              options.message = $compile(template)($rootScope);
+              options.scope = options.scope || $rootScope;
+              options.message = $compile(template)(options.scope);
               bootbox.dialog(options);
             })
             .catch(function() {
