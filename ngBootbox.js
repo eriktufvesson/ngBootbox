@@ -24,9 +24,11 @@ angular.module('ngBootbox', [])
         var msg = attr.ngBootboxConfirm || "Are you sure?";
         element.bind('click', function () {
           $ngBootbox.confirm(msg).then(function () {
-            scope.$apply(scope.actionOK);
+            // scope.$apply(scope.actionOK);
+            scope.actionOK();
           }, function () {
-            scope.$apply(scope.actionCancel);
+            //scope.$apply(scope.actionCancel);
+            scope.actionCancel();
           });
         });
       }
@@ -42,11 +44,11 @@ angular.module('ngBootbox', [])
       },
       link: function (scope, element, attr) {
         var msg = attr.ngBootboxPrompt || "Are you sure?";
-        $ngBootbox.bind('click', function () {
+        element.bind('click', function () {
           $ngBootbox.prompt(msg).then(function (result) {
-            scope.$apply(function() { scope.actionOK({result: result}); });
+            scope.actionOK({result: result});
           }, function() {
-            scope.$apply(scope.actionCancel);
+            scope.actionCancel();
           });
         });
       }
