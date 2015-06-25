@@ -65,7 +65,8 @@ angular.module('testApp', ['ngBootbox'])
           closeButton: true,
           animate: true,
           className: 'test-class',
-          buttons: $scope.customDialogButtons
+          buttons: $scope.customDialogButtons,
+          message: 'test'
       };
 
       $scope.customDialogButtons = {
