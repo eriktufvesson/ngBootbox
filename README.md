@@ -6,7 +6,7 @@ AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of T
 Current version
 ===============
 
-### Version 0.1.0
+### Version 0.1.1
 
 Installation
 =========
