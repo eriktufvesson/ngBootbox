@@ -1,6 +1,13 @@
+if (typeof define === "function" && define.amd) {
+  // AMD. Register as an anonymous module.
+  define(["bootbox"], function (bootbox) {
+    window.bootbox = bootbox;
+  });
+}
+
 angular.module('ngBootbox', [])
-  /* @ngInject */
-  .directive('ngBootboxAlert', function($ngBootbox) {
+/* @ngInject */
+  .directive('ngBootboxAlert', function ($ngBootbox) {
     return {
       restrict: 'A',
       scope: false,
@@ -13,7 +20,7 @@ angular.module('ngBootbox', [])
     };
   })
   /* @ngInject */
-  .directive('ngBootboxConfirm', function($ngBootbox) {
+  .directive('ngBootboxConfirm', function ($ngBootbox) {
     return {
       restrict: 'A',
       scope: {
@@ -35,7 +42,7 @@ angular.module('ngBootbox', [])
     };
   })
   /* @ngInject */
-  .directive('ngBootboxPrompt', function($ngBootbox) {
+  .directive('ngBootboxPrompt', function ($ngBootbox) {
     return {
       restrict: 'A',
       scope: {
@@ -46,8 +53,8 @@ angular.module('ngBootbox', [])
         var msg = attr.ngBootboxPrompt || "Are you sure?";
         element.bind('click', function () {
           $ngBootbox.prompt(msg).then(function (result) {
-            scope.actionOK({result: result});
-          }, function() {
+            scope.actionOK({ result: result });
+          }, function () {
             scope.actionCancel();
           });
         });
@@ -55,8 +62,8 @@ angular.module('ngBootbox', [])
     };
   })
   /* @ngInject */
-  .directive('ngBootboxCustomDialog', function($ngBootbox) {
-
+  .directive('ngBootboxCustomDialog', function ($ngBootbox) {
+  
     return {
       restrict: 'A',
       scope: {
@@ -68,21 +75,21 @@ angular.module('ngBootbox', [])
       },
       link: function (scope, element, attr) {
         var options = {},
-            templateUrl = attr.ngBootboxCustomDialogTemplate;
-
+          templateUrl = attr.ngBootboxCustomDialogTemplate;
+  
         if (scope.options) {
           options = scope.options;
         }
-        if(scope.title) options.title = scope.title;
-        if(scope.buttons) options.buttons = scope.buttons;
-        if(scope.className) options.className = scope.className;
-        if(scope.data) options.data = scope.data;
-        if( templateUrl ) {
+        if (scope.title) options.title = scope.title;
+        if (scope.buttons) options.buttons = scope.buttons;
+        if (scope.className) options.className = scope.className;
+        if (scope.data) options.data = scope.data;
+        if (templateUrl) {
           options.templateUrl = templateUrl;
         } else {
           options.message = attr.ngBootboxCustomDialog;
         }
-
+  
         element.bind('click', function () {
           $ngBootbox.customDialog(options);
         });
@@ -90,18 +97,18 @@ angular.module('ngBootbox', [])
     };
   })
   /* @ngInject */
-  .factory('$ngBootbox', function($q, $templateCache, $compile, $rootScope, $http) {
+  .factory('$ngBootbox', function ($q, $templateCache, $compile, $rootScope, $http, $window) {
     return {
-      alert: function(msg) {
+      alert: function (msg) {
         var deferred = $q.defer();
-        bootbox.alert(msg, function() {
+        $window.bootbox.alert(msg, function () {
           deferred.resolve();
         });
         return deferred.promise;
       },
-      confirm: function(msg) {
+      confirm: function (msg) {
         var deferred = $q.defer();
-        bootbox.confirm(msg, function(result) {
+        $window.bootbox.confirm(msg, function (result) {
           if (result) {
             deferred.resolve();
           }
@@ -111,9 +118,9 @@ angular.module('ngBootbox', [])
         });
         return deferred.promise;
       },
-      prompt: function(msg) {
+      prompt: function (msg) {
         var deferred = $q.defer();
-        bootbox.prompt(msg, function(result) {
+        $window.bootbox.prompt(msg, function (result) {
           if (result !== null) {
             deferred.resolve(result);
           }
@@ -123,46 +130,46 @@ angular.module('ngBootbox', [])
         });
         return deferred.promise;
       },
-      customDialog: function(options) {
+      customDialog: function (options) {
         if (options.templateUrl) {
           getTemplate(options.templateUrl)
-            .then(function(template) {
+            .then(function (template) {
               options.scope = options.scope || $rootScope;
               options.message = $compile(template)(options.scope);
-              bootbox.dialog(options);
+              $window.bootbox.dialog(options);
             })
-            .catch(function() {
-              bootbox.dialog(options);
+            .catch(function () {
+              $window.bootbox.dialog(options);
             });
         }
         else {
-          bootbox.dialog(options);
+          $window.bootbox.dialog(options);
         }
       },
-      setDefaults: function(options) {
-        bootbox.setDefaults(options);
+      setDefaults: function (options) {
+        $window.bootbox.setDefaults(options);
       },
-      hideAll: function() {
-        bootbox.hideAll();
+      hideAll: function () {
+        $window.bootbox.hideAll();
       },
-      setLocale: function(name) {
-        bootbox.setLocale(name);
+      setLocale: function (name) {
+        $window.bootbox.setLocale(name);
       },
-      addLocale: function(name, values) {
-        bootbox.addLocale(name, values);
+      addLocale: function (name, values) {
+        $window.bootbox.addLocale(name, values);
       },
-      removeLocale: function(name) {
-        bootbox.removeLocale(name);
+      removeLocale: function (name) {
+        $window.bootbox.removeLocale(name);
       }
     };
-
+  
     function getTemplate(templateId) {
       var def = $q.defer();
-
+  
       var template = $templateCache.get(templateId);
       if (typeof template === "undefined") {
         $http.get(templateId)
-          .success(function(data) {
+          .success(function (data) {
             $templateCache.put(templateId, data);
             def.resolve(data);
           });

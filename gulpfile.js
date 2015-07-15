@@ -10,7 +10,8 @@ var jshint = require('gulp-jshint');
 var paths = {
   scripts: [
     './ngBootbox.js',
-    './app/**/*.js'
+    './examples/**/*.js',
+    '!./examples/**/require.js'
   ]
 };
 var port = 8181;
@@ -46,9 +47,9 @@ gulp.task('watch', function() {
 
 gulp.task('open', ['webserver'], function() {
   var options = {
-    url: 'http://localhost:' + port + '/app/index.html'
+    url: 'http://localhost:' + port + '/examples/index.html'
   };
-  gulp.src('./app/index.html')
+  gulp.src('./examples/index.html')
     .pipe(open('', options));
 });
 
