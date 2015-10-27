@@ -6,7 +6,7 @@ AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of T
 Current version
 ===============
 
-### Version 0.1.1
+### Version 0.1.2
 
 Installation
 =========
@@ -14,6 +14,10 @@ Installation
 Bower
 -----
     bower install --save ngBootbox
+    
+npm
+---
+    npm install --save ngBootbox
 
 Development mode
 ----------------
