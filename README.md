@@ -17,7 +17,7 @@ Bower
     
 npm
 ---
-    npm install --save ngBootbox
+    npm install --save ngbootbox
 
 Development mode
 ----------------

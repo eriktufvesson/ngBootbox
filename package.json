@@ -1,5 +1,5 @@
 {
-  "name": "ngBootbox",
+  "name": "ngbootbox",
   "version": "0.1.2",
   "description": "AngularJS wrapper for bootbox.js",
   "main": "dist/ngBootbox.js",
