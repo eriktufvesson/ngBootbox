@@ -146,8 +146,7 @@ angular.module('ngBootbox', [])
               options.scope = options.scope || $rootScope;
               options.message = $compile(template)(options.scope);
               $window.bootbox.dialog(options);
-            })
-            .catch(function () {
+            }, function () { //Show default dialog if no template could be found
               $window.bootbox.dialog(options);
             });
         }
