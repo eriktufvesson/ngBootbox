@@ -6,7 +6,33 @@ if (typeof define === "function" && define.amd) {
 }
 
 angular.module('ngBootbox', [])
-/* @ngInject */
+  /* @ngInject */
+  .provider('$ngBootboxConfig', function() {
+    
+    var defaultLocale = '';
+    
+    return {
+      setDefaultLocale: function(name) {
+        defaultLocale = name;
+        window.bootbox.setLocale(name);
+      },
+      addLocale: function (name, values) {
+        window.bootbox.addLocale(name, values);
+      },
+      removeLocale: function (name) {
+        window.bootbox.removeLocale(name);
+      },
+      $get: function() {
+        return ({
+          getDefaultLocale: function() {
+            return defaultLocale;
+          }
+        });
+      }
+    };
+  })
+  
+  /* @ngInject */
   .directive('ngBootboxAlert', ["$ngBootbox", function ($ngBootbox) {
     return {
       restrict: 'A',
@@ -31,10 +57,8 @@ angular.module('ngBootbox', [])
         var msg = attr.ngBootboxConfirm || "Are you sure?";
         element.bind('click', function () {
           $ngBootbox.confirm(msg).then(function () {
-            // scope.$apply(scope.actionOK);
             scope.actionOK();
           }, function () {
-            //scope.$apply(scope.actionCancel);
             scope.actionCancel();
           });
         });

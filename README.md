@@ -6,18 +6,14 @@ AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of T
 Current version
 ===============
 
-### Version 0.1.2
+### v0.1.3
 
 Installation
 =========
 
-Bower
------
-    bower install --save ngBootbox
-    
-npm
----
-    npm install --save ngbootbox
+    bower install ngBootbox
+
+    npm install ngbootbox
 
 Development mode
 ----------------
@@ -52,6 +48,7 @@ Demo
 ====
 
 Visit this page for a working [demo](http://eriktufvesson.github.io/ngbootbox/ "ngBootbox").
+    
 
 Directives
 ==========
@@ -295,3 +292,23 @@ Allows the user to remove a locale from the available locale settings.
 ### $ngBootbox.setLocale(String name)
 
 Allows the user to select a locale rather than using setDefaults("locale", ...).
+
+
+
+Configuration
+============
+
+$ngBootboxConfigProvider
+------------------------
+
+    angular.module('yourApp')
+        .config(function($ngBootboxConfigProvider) {
+            $ngBootboxConfigProvider.setDefaultLocale('sv');
+            
+            $ngBootboxConfigProvider.addLocale('ex', { OK: 'OK', CANCEL: 'Avbryt', CONFIRM: 'Bekräfta' });
+            
+            $ngBootboxConfigProvider.removeLocale('ex');
+         })
+         .controller('TestCtrl', function($ngBootboxConfig) {
+            var defaultLocale = $ngBootboxConfig.getDefaultLocale();  
+         });

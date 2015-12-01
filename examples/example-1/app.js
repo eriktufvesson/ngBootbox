@@ -2,16 +2,21 @@
  * Created by Erik on 2014-05-30.
  */
 angular.module('testApp', ['ngBootbox'])
+
+  .config(function($ngBootboxConfigProvider) {
+    $ngBootboxConfigProvider.setDefaultLocale('sv');
+  })
+
   .controller('TestCtrl', function($scope, $log, $ngBootbox) {
 
       $scope.locales = ['bg_BG', 'br', 'cs', 'da', 'de', 'el', 'en', 'es', 'et', 'fa', 'fi', 'fr', 'he', 'hu', 'hr', 'id', 'it', 'ja', 'lt',
         'lv', 'nl', 'no', 'pl', 'pt', 'ru', 'sq', 'sv', 'th', 'tr', 'zh_CN', 'zh_TW'];
-      $scope.selectedLocale = 'en';
+      //$scope.selectedLocale = 'sv';
 
       $ngBootbox.setDefaults({
           animate: false,
           backdrop: false,
-          locale: $scope.selectedLocale
+          //locale: $scope.selectedLocale
       });
 
       $scope.actions = [];
