@@ -160,6 +160,32 @@ An options object can also be used to configure a custom dialog. A full list of 
             }
         };
     </script>
+    
+Scope passing to custom dialog
+------------------------------
+You can pass `$scope` to a custom dialog by specifying the `scope` parameter in options.
+
+    <script>
+        $scope.customDialogOptions = {
+            templateUrl: 'customModal.html',
+            scope: $scope,
+            title: 'The best title!',
+            buttons: {
+                warning: {
+                    label: "Cancel",
+                    className: "btn-warning",
+                    callback: function() { ... }
+                },
+                success: {
+                    label: "Ok",
+                    className: "btn-success",
+                    callback: function() { ... }
+                }
+            }
+        };
+    </script>
+    
+This allows your modal to interact with your controller's scope and bind data in a custom template.
 
 $ngBootbox service
 ==================
