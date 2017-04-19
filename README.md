@@ -247,6 +247,7 @@ A full list of available options can be found in the official Bootbox.js [docume
 
     $scope.customDialogOptions = {
     templateUrl: 'custom-dialog.tpl.html',
+    scope: $scope,
          title: 'The title!',
          buttons: $scope.customDialogButtons
     };
