@@ -1,6 +1,6 @@
 {
   "name": "ngbootbox",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "AngularJS wrapper for bootbox.js",
   "main": "dist/ngBootbox.js",
   "dependencies": {
