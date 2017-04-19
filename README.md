@@ -3,11 +3,6 @@ ngBootbox
 
 AngularJS wrapper for Bootbox.js. Bootbox.js allowes you to easily make use of Twitter Bootstrap modals for javascript alerts, confirms and prompts. ngBootbox includes three directives, one for each of alert, confirm and prompt.
 
-Current version
-===============
-
-### v0.1.3
-
 Installation
 =========
 
