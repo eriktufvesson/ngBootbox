@@ -213,7 +213,11 @@ Returns a promise that is resolved when the dialog is closed.
         .then(function() {
             console.log('Alert closed');
         });
-
+        
+    $ngBootbox.alert({message:'Another important message!', title:'Ops!'})
+        .then(function() {
+            console.log('Alert closed');
+        });
 
 ### $ngBootbox.confirm(msg)
 
@@ -227,7 +231,14 @@ Returns a promise that is resolved when if confirmed and rejected if dismissed.
         }, function() {
             console.log('Confirm dismissed!');
         });
-
+        
+    $ngBootbox.confirm({message:"Another question?", title:'Please answer'})
+        .then(function() {
+            console.log('Confirmed!');
+        }, function() {
+            console.log('Confirm dismissed!');
+        });
+        
 ### $ngBootbox.prompt(msg)
 
 Returns a promise that is resolved when submitted and rejected if dismissed.
