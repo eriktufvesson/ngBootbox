@@ -144,6 +144,10 @@ angular.module('ngBootbox', [])
             angular.merge(msg, { callback: _callback })
           );
         }
+        else
+        {
+          $window.bootbox.alert(msg, _callback);
+        }
         return deferred.promise;
       },
       confirm: function (msg) {
@@ -159,6 +163,10 @@ angular.module('ngBootbox', [])
         if (typeof (msg) === "object")
         {
           $window.bootbox.confirm(angular.merge(msg, { callback: _callback }));
+        }
+		else
+        {
+          $window.bootbox.confirm(msg, _callback);
         }
         
         return deferred.promise;
