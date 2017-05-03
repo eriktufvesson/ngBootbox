@@ -38,8 +38,12 @@ angular.module('ngBootbox', [])
       scope: false,
       link: function (scope, element, attr) {
         var msg = attr.ngBootboxAlert || "Yo!";
+		var title = attr.ngBootboxTitle;
         element.bind('click', function () {
-          $ngBootbox.alert(msg);
+          $ngBootbox.alert({
+			  message: msg,
+			  title: title
+		  });
         });
       }
     };
@@ -54,8 +58,12 @@ angular.module('ngBootbox', [])
       },
       link: function (scope, element, attr) {
         var msg = attr.ngBootboxConfirm || "Are you sure?";
+		var title = attr.ngBootboxTitle;
         element.bind('click', function () {
-          $ngBootbox.confirm(msg).then(function () {
+          $ngBootbox.confirm({
+			  message: msg,
+			  title: title
+		  }).then(function () {
             scope.actionOK();
           }, function () {
             scope.actionCancel();
@@ -136,10 +144,6 @@ angular.module('ngBootbox', [])
             angular.merge(msg, { callback: _callback })
           );
         }
-        else
-        {
-          $window.bootbox.alert(msg, _callback);
-        }
         return deferred.promise;
       },
       confirm: function (msg) {
@@ -155,10 +159,6 @@ angular.module('ngBootbox', [])
         if (typeof (msg) === "object")
         {
           $window.bootbox.confirm(angular.merge(msg, { callback: _callback }));
-        }
-        else
-        {
-          $window.bootbox.confirm(msg, _callback);
         }
         
         return deferred.promise;
