@@ -165,19 +165,26 @@ angular.module('ngBootbox', [])
       },
       prompt: function (msg, value, selectAllOnFocus) {
         var deferred = $q.defer();
-        $window.bootbox.prompt({
-          title: msg,
-          value: value || '',
-          selectAllOnFocus: selectAllOnFocus || false,
-          callback: function (result) {
-            if (result !== null) {
-              deferred.resolve(result);
-            }
-            else {
-              deferred.reject();
-            }
+        function _callback(result) {
+          if (result !== null) {
+            deferred.resolve(result);
           }
-        });
+          else {
+            deferred.reject();
+          }
+        }
+        if (typeof (msg) === "object")
+        {
+          $window.bootbox.prompt(angular.merge(msg, { callback: _callback }));
+        }
+        else {
+          $window.bootbox.prompt({
+            title: msg,
+            value: value || '',
+            selectAllOnFocus: selectAllOnFocus || false,
+            callback: _callback
+          });
+        }
         return deferred.promise;
       },
       customDialog: function (options) {
